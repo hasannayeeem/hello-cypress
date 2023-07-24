@@ -33,3 +33,9 @@ Cypress.Commands.add("login", (username, password) => {
     cacheAcrossSpecs: true
   });
 });
+
+Cypress.Commands.add("checkCssProperties", (element, cssProperties) => {
+  for (const prop in cssProperties) {
+    cy.get(element).should("have.css", prop, cssProperties[prop]);
+  }
+});

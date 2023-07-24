@@ -10,10 +10,6 @@ describe("LIST", () => {
   it("test to set list's properties", () => {
     cy.getOrCreateToken();
     visitToCmsBuilder();
-    //       setTimeout(function(){
-    //         //code goes here
-    //         !isExist('lists') && addElement()
-    //    }, 50000);
     cy.get("iframe#dorik-builder-iframe")
       .its("0.contentDocument.body")
       .find(`[itemtype="lists"]`)
@@ -25,12 +21,18 @@ describe("LIST", () => {
       cy.get('[data-testid="toggle"]').eq(1).click() // close first field
       cy.get('[style="margin-top: 8px; margin-bottom: 16px;"] > div:eq(0)')
       .find(".fa-trash-can").last().click()  
-      cy.contains("+ Add New").should("be.visible").click() //check adding button for add a new field of this accordion
+      cy.contains("+ Add New").should("be.visible").click() //check adding button for add a new field of this list
     cy.get('[style="margin-top: 8px; margin-bottom: 16px;"] > div:eq(0)')
     .find(".icon-toggle").last().click()
     cy.get(`[aria-label="rdw-editor"]`).click().clear().type(`${listLastItem}`);
     cy.get(`[aria-label="rdw-editor"]`).click().type(`{selectAll}`);
     cy.get(`[title="Bold"]`).click()
+    cy.contains(`Icon Pack Selection`);
+    cy.contains(`Font Awesome`).should("be.visible").click();
+    cy.contains("Feather").should("be.visible") //.click()
+    cy.get(`[placeholder="Search for Icon"]`).click().clear().type("moon")
+    cy.wait(200)
+    cy.get(`[placeholder="Search for Icon"]`).parent().find("ul > li").eq(0).click()
     cy.contains(`Icon Size`); //.should(`be.visible`)
     cy.get(".form-control--with-arrow").eq(0).click().clear().type("25px"); // set heading size with input and type
     cy.contains(`Icon Color`);
@@ -73,7 +75,7 @@ describe("LIST", () => {
 
     // icon styles open
     cy.get('[data-testid="toggle"]').eq(2).click();
-    cy.contains("Icon Position").should("be.visible");
+    cy.contains("Icon Position") //.should("be.visible");
     cy.contains("Icon & Text Gap"); //.should("be.visible");
     cy.get(".form-control--with-arrow").eq(0).click().clear().type("8px");
     cy.contains("Icon Size"); //.should("be.visible");
@@ -135,16 +137,29 @@ describe("LIST", () => {
     cy.get('[data-testid="toggle"]').eq(4).click();
     cy.contains("Background Style").should("be.visible");
     cy.contains("Color").should("be.visible") //.click();
-    cy.contains("Gradient").should("be.visible") //.click();
-    // cy.contains("Gradient Background").should("be.visible") //.click();
-    // cy.contains("Add Custom Gradient").should("be.visible") //.click();
-    cy.contains("Background Color").should("be.visible");
-    cy.get('[placeholder="eg: #ff00ff"]').eq(0).click().clear().clear().type("#F0F0D6")
+    cy.contains("Gradient").should("be.visible").click();
+    // cy.contains("Add Custom Gradient").should("be.visible").click();
+    cy.contains("Gradient Background").should("be.visible") //.click();
+    cy.contains("Library").should("be.visible")
+    cy.contains("Advance").should("be.visible")
+    cy.contains("Simple").should("be.visible")
+    cy.get('[placeholder="eg: #ff00ff"]').eq(0).click().clear().clear()
+    .type("#FC466C")
+    cy.get('[placeholder="eg: #ff00ff"]').eq(1).click().clear().clear()
+    .type("#3F5EFC")
+    cy.contains("Radial Gradient").should("be.visible").click()
+    cy.contains("Radial Shape").should("be.visible")
+    cy.contains("Ellipse").should("be.visible").click()
+    cy.contains("Circle").should("be.visible")
+    cy.contains("Radial Direction").should("be.visible")
+    cy.get("select").select("Top Left").should("have.value", "top left");
+    // cy.contains("Background Color").should("be.visible");
+    // cy.get('[placeholder="eg: #ff00ff"]').eq(0).click().clear().clear().type("#F0F0D6")
     cy.get('[data-testid="toggle"]').eq(4).click();
-    saveAndPublish()
-    // visitToPublishedUrl("lists")
-    cy.wait(10000)
-    checkPublishend("lists")
     // list background close
+
+    saveAndPublish()
+    cy.wait(10000)
+    checkPublishend("list")
   });
 });

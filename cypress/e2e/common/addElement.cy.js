@@ -1,13 +1,7 @@
+const { visitToCmsBuilder } = require("../util");
+
 it("add element", ()=> {
-    cy.intercept({ method: "POST", url: "/api/auth" }).as("authpass");
-    cy.intercept({ method: "POST", url: "/api/cms" }).as("cmsapi");
-    cy.visit(
-      "https://test-with-cy.dcms.site/dashboard/design/64abf37eafc6980012bbbb95"
-    );
-    // cy.wait("@authpass");
-    cy.wait("@cmsapi");
-    cy.get("#dorik-builder-iframe", { timeout: 20000 }).should("be.visible");
-    cy.get("#dorik-builder-iframe").its("0.contentDocument").should("exist"); //checked iframe's content visibility
+    visitToCmsBuilder()
     // cy.get("iframe#dorik-builder-iframe")
     // .its("0.contentDocument.body")
     // .find("button.btn-primary")

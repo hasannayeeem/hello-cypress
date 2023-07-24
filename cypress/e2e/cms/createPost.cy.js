@@ -1,10 +1,9 @@
+const { visitToCmsDashboard } = require("../util");
+
 describe("create a post on cms dashboard", () => {
   it("create a post", () => {
     cy.getOrCreateToken();
-    cy.visit("https://test-with-cy.dcms.site/dashboard/");
-    cy.intercept({ method: "POST", url: "/api/cms" }).as("cmsapi");
-    cy.wait("@cmsapi");
-    cy.contains("Posts").should("be.visible");
+    visitToCmsDashboard()
     cy.contains("Posts").click();
     cy.contains("New Post", { timeout: 5000 }).click();
     cy.get(".blog--post__title").type("Hello, Test");

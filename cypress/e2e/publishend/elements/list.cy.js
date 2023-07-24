@@ -9,6 +9,7 @@ export const lists = () => {
           "justify-content": "center",
           "background-color": "rgb(240, 240, 214)",
           "border-right-width": "5px",
+          "background-image": "radial-gradient(ellipse at top left, #FC466C 0%, #3F5EFC 100%)"
         });
         cy.get(".dorik-list > .dorik-list--item").should("have.length", 3);
         cy.get(".dorik-list > .dorik-list--item").should(

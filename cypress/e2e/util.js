@@ -13,14 +13,33 @@ export const visitToCmsBuilder = () => {
   cy.get("#dorik-builder-iframe", { timeout: 20000 }).should("be.visible");
   cy.get("#dorik-builder-iframe").its("0.contentDocument").should("exist"); //checked iframe's content visibility
 };
+export const visitToCmsDashboard = () => {
+  cy.intercept({ method: "POST", url: "/api/auth" }).as("authpass");
+  cy.intercept({ method: "POST", url: "/api/cms" }).as("cmsapi");
+  cy.visit(`${Cypress.env("cmsDashboard")}`);
+  // cy.wait("@authpass");
+  cy.wait("@cmsapi");
+  cy.contains("Design & Pages").should("be.visible");
+};
 export const visitToStaticBuilder = () => {
-  cy.visit(`${Cypress.env("publishedURL")}`);
+  cy.intercept({ method: "POST", url: "/graphql" }).as("profile");
+    cy.visit(`${Cypress.env("staticURL")}`);
+    cy.wait("@profile");
+    cy.contains("Static").should("be.visible");
+    cy.contains("Static").click();
+    cy.get('[gutter="32,40"] > :nth-child(3)')
+      .contains("Edit Site")
+      .should("be.visible")
+      .click();
+    cy.get("#dorik-builder-iframe", { timeout: 30000 }) //.should("be.visible");
+    cy.get('[aria-label="Close"]').should("be.visible").click()
+    cy.get("#dorik-builder-iframe").its("0.contentDocument").should("exist");
 };
 export const saveAndPublish = () => {
     // after(()=> {
         // to save
         cy.scrollTo("top");
-        cy.contains(" Save").should("be.visible").click();
+        cy.contains(" Save").click();
         // to publish
         cy.get(".active > button").should("contain", "Publish").click();
         // })

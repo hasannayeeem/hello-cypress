@@ -1,5 +1,6 @@
-import { accordion } from "./accordion.cy";
-import { lists } from "./lists.cy";
+import { accordion } from "./el_p_code/accordion";
+import { list } from "./el_p_code/list";
+
 
 export const checkPublishend = (el) =>{
   cy.visit(`${Cypress.env("publishedURL")}`);
@@ -7,13 +8,13 @@ export const checkPublishend = (el) =>{
         case "accordion":
           accordion()
           break;
-        case "lists":
-          lists()
+        case "list":
+          list()
           break;
         default:
             describe("check publish end", () => {
                 accordion()
-                lists()
+                list()
               });
       }
 }

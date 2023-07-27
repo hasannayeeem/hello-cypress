@@ -2,6 +2,7 @@ import { accordion } from "./el_p_code/accordion";
 import { links } from "./el_p_code/links";
 import { list } from "./el_p_code/list";
 import { regularButton } from "./el_p_code/regularButton";
+import socialIcon from "./el_p_code/socialIcon";
 
 
 export const checkPublishend = (el) =>{
@@ -19,12 +20,16 @@ export const checkPublishend = (el) =>{
         case "regularButton":
           regularButton()
           break;
+        case "socialIcon":
+          socialIcon()
+          break;
         default:
             describe("check publish end", () => {
                 accordion()
                 list()
                 regularButton()
                 links()
+                socialIcon()
               });
       }
 }

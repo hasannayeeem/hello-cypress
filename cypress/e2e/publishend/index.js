@@ -1,5 +1,6 @@
 import { accordion } from "./el_p_code/accordion";
 import { list } from "./el_p_code/list";
+import { regularButton } from "./el_p_code/regularButton";
 
 
 export const checkPublishend = (el) =>{
@@ -11,10 +12,14 @@ export const checkPublishend = (el) =>{
         case "list":
           list()
           break;
+        case "regularButton":
+          regularButton()
+          break;
         default:
             describe("check publish end", () => {
                 accordion()
                 list()
+                regularButton()
               });
       }
 }

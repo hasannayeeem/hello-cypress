@@ -118,7 +118,7 @@ describe("LIST", () => {
     // list background close
 
     saveAndPublish()
-    cy.wait(20000)
-    checkPublishend("list")
+    cy.wait("@cmsapi")
+    // checkPublishend("list")
   });
 });

@@ -1,14 +1,14 @@
 import { checkPublishend } from "../publishend";
 import { openGeneralsettingModal, saveAndPublish, visitToCmsBuilder } from "../util";
 
-describe("CONTACT FORM", () => {
+describe("TABS", () => {
   // ___________________________________________
-  //     test to set CONTACT FORM's properties
+  //     test to set TABS's properties
   // -------------------------------------------
-  it("test to set CONTACT FORM's properties", () => {
+  it("test to set TABS's properties", () => {
     cy.getOrCreateToken();
     visitToCmsBuilder();
-    openGeneralsettingModal("contactForm")
+    openGeneralsettingModal("tabs")
 
 
 // SAVE

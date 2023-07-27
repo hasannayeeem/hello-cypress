@@ -14,7 +14,6 @@ export const links = () => {
       "flex-direction": "row-reverse"
     });
     cy.wait(200)
-    cy.get(`.dorik-list--link:eq(1) > .dorik-list--icon`)
     cy.get(`.dorik-list--link:eq(1)`).should("have.attr", "href", "/check-button")
     cy.wait(200)
     cy.checkCssProperties(".dorik-list--link:eq(1) > .dorik-list--icon", {
@@ -22,5 +21,12 @@ export const links = () => {
         "color": "rgb(255, 0, 255)",
         "margin-left": "7px"
     });
+    cy.wait(200)
+    cy.get(".dorik-list--link:eq(1)")
+    .trigger("mouseover")
+    .should("have.css", {
+      "color": "rgb(161, 69, 161)",
+      "text-decoration": "overline rgb(161, 69, 161)"
+    })
   };
   

@@ -1,4 +1,4 @@
-export const accordion = () => {
+const accordion = () => {
         // start to checking ACCORDION
         cy.get("details").click({ multiple: true });
         cy.get("summary:eq(0)").should("have.css", {
@@ -17,4 +17,5 @@ export const accordion = () => {
         cy.get("details > .details-content")
           .last()
           .should("contain", "I'm a automatically typed accordion's description");
-}
+      }
+      export default accordion;

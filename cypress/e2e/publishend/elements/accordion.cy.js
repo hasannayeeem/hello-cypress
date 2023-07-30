@@ -1,3 +1,4 @@
+import _accordion from "../el_p_code/accordion";
 export const accordion = () => {
     it("test ACCORDION on publishend", () => {
         cy.getOrCreateToken();

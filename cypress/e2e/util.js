@@ -44,10 +44,10 @@ export const saveAndPublish = () => {
   cy.get(".active > button").should("contain", "Publish").click();
   // })
 };
-export const openGeneralsettingModal = (type) => {
+export const openGeneralsettingModal = (type, i=0) => {
   cy.get("iframe#dorik-builder-iframe")
     .its("0.contentDocument.body")
-    .find(`[itemtype="${type}"]`)//.eq(0)
+    .find(`[itemtype="${type}"]`).eq(i)
     .trigger("mouseover")
     .find("button:eq(1)") // find edit element button
     .click(); //open general setting modal

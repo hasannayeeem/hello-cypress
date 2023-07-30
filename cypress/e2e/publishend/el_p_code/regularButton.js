@@ -1,4 +1,4 @@
-export const regularButton = () => {
+const regularButton = () => {
   // start to checking REGULAR BUTTON
   cy.checkCssProperties(".dorik-btn", {
     "justify-content": "center",
@@ -30,3 +30,4 @@ export const regularButton = () => {
     .should("have.attr", "href", "https://test-with-cy.dcms.site/")
     .click();
 };
+export default regularButton

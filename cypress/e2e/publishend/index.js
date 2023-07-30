@@ -1,7 +1,7 @@
-import { accordion } from "./el_p_code/accordion";
-import { links } from "./el_p_code/links";
-import { list } from "./el_p_code/list";
-import { regularButton } from "./el_p_code/regularButton";
+import accordion from "./el_p_code/accordion";
+import links from "./el_p_code/links";
+import list from "./el_p_code/list";
+import regularButton from "./el_p_code/regularButton";
 import socialIcon from "./el_p_code/socialIcon";
 
 

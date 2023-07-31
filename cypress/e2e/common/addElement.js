@@ -1,7 +1,7 @@
 export const addElement = (element = '') => {
     console.log('worked');
     // it("add element", ()=> {
-
+    // if empty page
     //     // cy.get("iframe#dorik-builder-iframe")
     //     // .its("0.contentDocument.body")
     //     // .find("button.btn-primary")
